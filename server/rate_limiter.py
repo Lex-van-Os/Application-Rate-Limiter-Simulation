@@ -16,7 +16,7 @@ class SlidingWindowCounter:
         self.limit = limit
         self.requests = deque()
 
-    def increment_count(self):
+    def add_request(self):
         """
         Increments the request count and removes expired requests from the sliding window.
         """

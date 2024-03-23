@@ -26,13 +26,11 @@ def sliding_window_rate_limit():
     return limiter_counter.is_allowed()
 
 
-@sliding_window_rate_limit
 @app.route('/')
 def hello():
     return jsonify(message='Hello, this is your API!')
 
 
-@sliding_window_rate_limit
 @app.route('/GetOrderInformation')
 def getOrder():
     if limiter_counter.is_allowed():
@@ -41,7 +39,6 @@ def getOrder():
         return jsonify(error='Rate limit exceeded'), 429
 
 
-@sliding_window_rate_limit
 @app.route('/RequestOrderInvoices')
 def requestOrderInvoices():
     if limiter_counter.is_allowed():
@@ -50,7 +47,6 @@ def requestOrderInvoices():
         return jsonify(error='Rate limit exceeded'), 429
 
 
-@sliding_window_rate_limit
 @app.route('/CreateOrder', methods=['POST'])
 def createOrder():
     if limiter_counter.is_allowed():
