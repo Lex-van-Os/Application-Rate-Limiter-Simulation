@@ -46,7 +46,7 @@ const App = () => {
       const randomEndpoint =
         endpoints[Math.floor(Math.random() * endpoints.length)];
       makeRequest(randomEndpoint);
-    }, 1000);
+    }, 200);
 
     return () => clearInterval(intervalId);
   }, []);
